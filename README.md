@@ -1,4 +1,4 @@
-# SimplChess
+# SimpleChess
 
 Chess game implementation with evaluators.
 

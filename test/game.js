@@ -31,9 +31,9 @@ var nblack = 0;
 
 for (var k in positions) {
     var position = positions[k];
-    if (position.cell.color === simplechess.White)
+    if (position.content.color === simplechess.White)
         nwhite++;
-    else if (position.cell.color == simplechess.Black)
+    else if (position.content.color == simplechess.Black)
         nblack++;
 }
 

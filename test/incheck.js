@@ -54,6 +54,35 @@ checkInCheck(Bishop, 3, 3);
 checkInCheck(Rook, 3, 3);
 checkInCheck(Queen, 3, 3);
 
+// Check if King at position x y, and it is not attackbed by misplaced piece 
+
+function checkNotInCheck(piece, x, y) {
+    var board = simplechess.createBoard();
+    var game = simplechess.createGame(board);
+
+    var moves = game.getPieceMoves(Black, Knight, x, y);
+
+    assert.ok(moves);
+    assert.ok(moves.length > 0);
+
+    moves.forEach(function(move) {
+        board = simplechess.createBoard();
+        var width = board.getWidth();
+        board.putContent(x, y, { color: White, piece: King });
+        var x2 = move.x2 + 1;
+        if (x2 >= width)
+            x2 = 0;
+        board.putContent(x2, move.y2, { color: Black, piece: Knight });
+        game = simplechess.createGame(board);
+        assert.equal(game.inCheck(White), false);
+        assert.equal(game.inCheck(Black), false);
+    });
+}
+
+checkNotInCheck(Knight, 3, 3);
+checkNotInCheck(Bishop, 3, 3);
+checkNotInCheck(Rook, 3, 3);
+
 // Pawn attack
 
 var board = simplechess.createBoard();

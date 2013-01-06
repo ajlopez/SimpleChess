@@ -7,6 +7,7 @@ var Black = simplechess.Black;
 var King = simplechess.King;
 var Rook = simplechess.Rook;
 var Bishop = simplechess.Bishop;
+var Knight = simplechess.Knight;
 
 // No check in empty board
 
@@ -37,25 +38,21 @@ assert.equal(game.inCheck(Black), false);
 
 board.removeContent(3, 7);
 board.putContent(3, 0, { color: Black, piece: Rook });
-var game = simplechess.createGame(board);
 
 assert.equal(game.inCheck(White), true);
 assert.equal(game.inCheck(Black), false);
 
 board.removeContent(3, 0);
 board.putContent(0, 3, { color: Black, piece: Rook });
-var game = simplechess.createGame(board);
 
 assert.equal(game.inCheck(White), true);
 assert.equal(game.inCheck(Black), false);
 
 board.removeContent(0, 3);
 board.putContent(7, 3, { color: Black, piece: Rook });
-var game = simplechess.createGame(board);
 
 assert.equal(game.inCheck(White), true);
 assert.equal(game.inCheck(Black), false);
-
 
 // Check if Bishop attacks
 
@@ -69,23 +66,59 @@ assert.equal(game.inCheck(Black), false);
 
 board.removeContent(1, 1);
 board.putContent(7, 7, { color: Black, piece: Bishop });
-var game = simplechess.createGame(board);
 
 assert.equal(game.inCheck(White), true);
 assert.equal(game.inCheck(Black), false);
 
 board.removeContent(7, 7);
 board.putContent(1, 5, { color: Black, piece: Bishop });
-var game = simplechess.createGame(board);
 
 assert.equal(game.inCheck(White), true);
 assert.equal(game.inCheck(Black), false);
 
 board.removeContent(1, 5);
 board.putContent(5, 1, { color: Black, piece: Bishop });
+
+assert.equal(game.inCheck(White), true);
+assert.equal(game.inCheck(Black), false);
+
+// Check if Knight attacks
+
+var board = simplechess.createBoard();
+board.putContent(3, 3, { color: White, piece: King });
+board.putContent(5, 4, { color: Black, piece: Knight });
 var game = simplechess.createGame(board);
 
 assert.equal(game.inCheck(White), true);
 assert.equal(game.inCheck(Black), false);
 
+board.removeContent(5, 4);
+board.putContent(4, 5, { color: Black, piece: Knight });
+
+assert.equal(game.inCheck(White), true);
+assert.equal(game.inCheck(Black), false);
+
+board.removeContent(5, 4);
+board.putContent(5, 2, { color: Black, piece: Knight });
+
+assert.equal(game.inCheck(White), true);
+assert.equal(game.inCheck(Black), false);
+
+board.removeContent(5, 2);
+board.putContent(4, 1, { color: Black, piece: Knight });
+
+assert.equal(game.inCheck(White), true);
+assert.equal(game.inCheck(Black), false);
+
+board.removeContent(4, 1);
+board.putContent(2, 5, { color: Black, piece: Knight });
+
+assert.equal(game.inCheck(White), true);
+assert.equal(game.inCheck(Black), false);
+
+board.removeContent(2, 5);
+board.putContent(2, 1, { color: Black, piece: Knight });
+
+assert.equal(game.inCheck(White), true);
+assert.equal(game.inCheck(Black), false);
 

@@ -10,7 +10,7 @@
     "test": "node ./test.js"
   }
 , "dependencies": {
-    "simpleboard": "0.0.1"
+    "simpleboard": ">= 0.0.1"
   }
 , "devDependencies": {
   }

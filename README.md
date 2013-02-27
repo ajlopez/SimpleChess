@@ -1,6 +1,6 @@
 # SimpleChess
 
-Chess game implementation with evaluators.
+Chess game implementation with evaluators. WIP.
 
 ## Installation
 
@@ -36,6 +36,10 @@ TBD
 ## To do
 
 - Samples
+
+## Versions
+
+- 0.0.1 Under development in master
 
 ## Contribution
 

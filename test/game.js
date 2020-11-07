@@ -1,71 +1,82 @@
 
-var simplechess = require('../'),
-    assert = require('assert');
+const simplechess = require('../');
+const assert = require('assert');
 
 // Colors defined
 
-assert.ok(simplechess.White);
-assert.ok(simplechess.Black);
+{
+    assert.ok(simplechess.White);
+    assert.ok(simplechess.Black);
+}
 
-var White = simplechess.White;
-var Black = simplechess.Black;
+const White = simplechess.White;
+const Black = simplechess.Black;
 
 // Pieces defined
 
-assert.ok(simplechess.Rook);
-assert.ok(simplechess.Knight);
-assert.ok(simplechess.Bishop);
-assert.ok(simplechess.Queen);
-assert.ok(simplechess.King);
-assert.ok(simplechess.Pawn);
+{
+    assert.ok(simplechess.Rook);
+    assert.ok(simplechess.Knight);
+    assert.ok(simplechess.Bishop);
+    assert.ok(simplechess.Queen);
+    assert.ok(simplechess.King);
+    assert.ok(simplechess.Pawn);
+}
     
 // create game with initial board
 
-var game = simplechess.createGame();
-assert.ok(game);
+{
+    const game = simplechess.createGame();
+    assert.ok(game);
 
-var positions = game.getPositions();
+    const positions = game.getPositions();
 
-assert.ok(positions);
-assert.equal(positions.length, 32);
+    assert.ok(positions);
+    assert.equal(positions.length, 32);
 
-var nwhite = 0;
-var nblack = 0;
+    let nwhite = 0;
+    let nblack = 0;
 
-for (var k in positions) {
-    var position = positions[k];
-    if (position.content.color === simplechess.White)
-        nwhite++;
-    else if (position.content.color == simplechess.Black)
-        nblack++;
+    for (let k in positions) {
+        const position = positions[k];
+        
+        if (position.content.color === simplechess.White)
+            nwhite++;
+        else if (position.content.color == simplechess.Black)
+            nblack++;
+    }
+
+    assert.equal(nwhite, 16);
+    assert.equal(nblack, 16);
 }
-
-assert.equal(nwhite, 16);
-assert.equal(nblack, 16);
 
 // create game with empty board and put pieces
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
 
-game.putPieces([{ x: 3, y: 3, color: White, piece: simplechess.Rook },
-    { x: 4, y: 4, color: Black, piece: simplechess.Bishop }]);
-    
-var positions = game.getPositions();
+    game.putPieces([{ x: 3, y: 3, color: White, piece: simplechess.Rook },
+        { x: 4, y: 4, color: Black, piece: simplechess.Bishop }]);
+        
+    const positions = game.getPositions();
 
-assert.ok(positions);
-assert.equal(positions.length, 2);
+    assert.ok(positions);
+    assert.equal(positions.length, 2);
 
-var nwhite = 0;
-var nblack = 0;
+    let nwhite = 0;
+    let nblack = 0;
 
-for (var k in positions) {
-    var position = positions[k];
-    if (position.content.color === simplechess.White)
-        nwhite++;
-    else if (position.content.color == simplechess.Black)
-        nblack++;
+    for (let k in positions) {
+        let position = positions[k];
+        
+        if (position.content.color === simplechess.White)
+            nwhite++;
+        else if (position.content.color == simplechess.Black)
+            nblack++;
+    }
+
+    assert.equal(nwhite, 1);
+    assert.equal(nblack, 1);
 }
 
-assert.equal(nwhite, 1);
-assert.equal(nblack, 1);

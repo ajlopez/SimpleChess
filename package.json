@@ -14,13 +14,13 @@
     },
     "main": "./lib/simplechess.js",
     "engines": {
-        "node": ">= 0.6.0 && < 0.9.0"
+        "node": ">= 6.14.0"
     },
     "scripts": {
         "test": "node ./test.js"
     },
     "dependencies": {
-        "simpleboard": ">= 0.0.1"
+        "simpleboard": "0.0.1"
     },
     "devDependencies": {}
 }

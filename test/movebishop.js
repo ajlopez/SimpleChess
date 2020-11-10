@@ -1,43 +1,61 @@
 
-var simplechess = require('../'),
-    assert = require('assert');
+const simplechess = require('../');
+const assert = require('assert');
 
-var White = simplechess.White;
-var Black = simplechess.Black;
-var Bishop = simplechess.Bishop;
+const White = simplechess.White;
+const Black = simplechess.Black;
+const Bishop = simplechess.Bishop;
 
 // First test
 
-var board = simplechess.createBoard();
-board.putContent(0, 0, { color: White, piece: Bishop });
+{
+    const board = simplechess.createBoard();
 
-var game = simplechess.createGame(board);
+    board.putContent(0, 0, { color: White, piece: Bishop });
 
-var moves = game.getMoves(White);
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
 
-assert.ok(moves);
-assert.equal(moves.length, 7);
+    assert.ok(moves);
+    assert.equal(moves.length, 7);
+}
 
 // Blocking bishop
 
-board.putContent(1, 1, { color: Black, piece: Bishop });
-var moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 1);
+{
+    const board = simplechess.createBoard();
 
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 9);
+    board.putContent(0, 0, { color: White, piece: Bishop });
+    board.putContent(1, 1, { color: Black, piece: Bishop });
+    
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
+
+    assert.ok(moves);
+    assert.equal(moves.length, 1);
+
+    const moves2 = game.getMoves(Black);
+
+    assert.ok(moves2);
+    assert.equal(moves2.length, 9);
+}
 
 // New board
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(3, 3, { color: Black, piece: Bishop });
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 13);
-moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 0);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(3, 3, { color: Black, piece: Bishop });
+    
+    const moves = game.getMoves(Black);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 13);
+    
+    const moves2 = game.getMoves(White);
+    
+    assert.ok(moves2);
+    assert.equal(moves2.length, 0);
+}
 

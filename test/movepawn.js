@@ -1,59 +1,82 @@
 
-var simplechess = require('../'),
-    assert = require('assert');
+const simplechess = require('../');
+const assert = require('assert');
 
-var White = simplechess.White;
-var Black = simplechess.Black;
-var Pawn = simplechess.Pawn;
+const White = simplechess.White;
+const Black = simplechess.Black;
+const Pawn = simplechess.Pawn;
 
 // First test
 
-var board = simplechess.createBoard();
-board.putContent(0, 3, { color: White, piece: Pawn });
+{
+    const board = simplechess.createBoard();
+    board.putContent(0, 3, { color: White, piece: Pawn });
 
-var game = simplechess.createGame(board);
+    const game = simplechess.createGame(board);
 
-var moves = game.getMoves(White);
+    const moves = game.getMoves(White);
 
-assert.ok(moves);
-assert.equal(moves.length, 1);
+    assert.ok(moves);
+    assert.equal(moves.length, 1);
+}
 
 // White at start position
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(1, 1, { color: White, piece: Pawn });
-var moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 2);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(1, 1, { color: White, piece: Pawn });
+    
+    const moves = game.getMoves(White);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 2);
+}
 
 // Black at start position
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(1, 6, { color: Black, piece: Pawn });
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 2);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(1, 6, { color: Black, piece: Pawn });
+    
+    const moves = game.getMoves(Black);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 2);
+}
 
 // White capture
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(3, 3, { color: White, piece: Pawn });
-board.putContent(4, 4, { color: Black, piece: Pawn });
-board.putContent(2, 4, { color: Black, piece: Pawn });
-var moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 3);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(3, 3, { color: White, piece: Pawn });
+    board.putContent(4, 4, { color: Black, piece: Pawn });
+    board.putContent(2, 4, { color: Black, piece: Pawn });
+    
+    const moves = game.getMoves(White);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 3);
+}
 
 // Black capture
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(3, 4, { color: Black, piece: Pawn });
-board.putContent(4, 3, { color: White, piece: Pawn });
-board.putContent(2, 3, { color: White, piece: Pawn });
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 3);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(3, 4, { color: Black, piece: Pawn });
+    board.putContent(4, 3, { color: White, piece: Pawn });
+    board.putContent(2, 3, { color: White, piece: Pawn });
+    
+    const moves = game.getMoves(Black);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 3);
+}
+

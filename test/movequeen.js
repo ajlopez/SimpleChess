@@ -1,43 +1,60 @@
 
-var simplechess = require('../'),
-    assert = require('assert');
+const simplechess = require('../');
+const assert = require('assert');
 
-var White = simplechess.White;
-var Black = simplechess.Black;
-var Queen = simplechess.Queen;
+const White = simplechess.White;
+const Black = simplechess.Black;
+const Queen = simplechess.Queen;
 
 // First test
 
-var board = simplechess.createBoard();
-board.putContent(0, 0, { color: White, piece: Queen });
+{
+    const board = simplechess.createBoard();
+    
+    board.putContent(0, 0, { color: White, piece: Queen });
 
-var game = simplechess.createGame(board);
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
 
-var moves = game.getMoves(White);
-
-assert.ok(moves);
-assert.equal(moves.length, 21);
+    assert.ok(moves);
+    assert.equal(moves.length, 21);
+}
 
 // Blocking queen
+{
+    const board = simplechess.createBoard();
+    
+    board.putContent(0, 0, { color: White, piece: Queen });
+    board.putContent(1, 1, { color: Black, piece: Queen });
 
-board.putContent(1, 1, { color: Black, piece: Queen });
-var moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 15);
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
 
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 23);
+    assert.ok(moves);
+    assert.equal(moves.length, 15);
+
+    const moves2 = game.getMoves(Black);
+
+    assert.ok(moves2);
+    assert.equal(moves2.length, 23);
+}
 
 // New board
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(3, 3, { color: Black, piece: Queen });
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 27);
-moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 0);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(3, 3, { color: Black, piece: Queen });
+    
+    const moves = game.getMoves(Black);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 27);
+    
+    const moves2 = game.getMoves(White);
+    
+    assert.ok(moves2);
+    assert.equal(moves2.length, 0);
+}
 

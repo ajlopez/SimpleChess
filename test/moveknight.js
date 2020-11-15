@@ -1,32 +1,41 @@
 
-var simplechess = require('../'),
-    assert = require('assert');
+const simplechess = require('../');
+const assert = require('assert');
 
-var White = simplechess.White;
-var Black = simplechess.Black;
-var Knight = simplechess.Knight;
+const White = simplechess.White;
+const Black = simplechess.Black;
+const Knight = simplechess.Knight;
 
 // First test
 
-var board = simplechess.createBoard();
-board.putContent(0, 0, { color: White, piece: Knight });
+{
+    const board = simplechess.createBoard();
 
-var game = simplechess.createGame(board);
+    board.putContent(0, 0, { color: White, piece: Knight });
 
-var moves = game.getMoves(White);
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
 
-assert.ok(moves);
-assert.equal(moves.length, 2);
+    assert.ok(moves);
+    assert.equal(moves.length, 2);
+}
 
 // New board
 
-var board = simplechess.createBoard();
-var game = simplechess.createGame(board);
-board.putContent(3, 3, { color: Black, piece: Knight });
-var moves = game.getMoves(Black);
-assert.ok(moves);
-assert.equal(moves.length, 8);
-moves = game.getMoves(White);
-assert.ok(moves);
-assert.equal(moves.length, 0);
+{
+    const board = simplechess.createBoard();
+    const game = simplechess.createGame(board);
+    
+    board.putContent(3, 3, { color: Black, piece: Knight });
+    
+    const moves = game.getMoves(Black);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 8);
+    
+    const moves2 = game.getMoves(White);
+    
+    assert.ok(moves2);
+    assert.equal(moves2.length, 0);
+}
 

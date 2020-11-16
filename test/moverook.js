@@ -52,6 +52,47 @@ const Rook = simplechess.Rook;
     assert.equal(moves4.length, 28);
 }
 
+// Blocking rook using same color
+
+{
+    const board = simplechess.createBoard();
+    
+    board.putContent(0, 0, { color: White, piece: Rook });
+    board.putContent(0, 1, { color: White, piece: Rook });
+
+    const game = simplechess.createGame(board);
+    
+    const moves = game.getMoves(White);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 20);
+
+    const moves2 = game.getMoves(Black);
+    
+    assert.ok(moves2);
+    assert.equal(moves2.length, 0);
+}
+
+// Single rook at center
+
+{
+    const board = simplechess.createBoard();
+    
+    board.putContent(4, 4, { color: White, piece: Rook });
+
+    const game = simplechess.createGame(board);
+    
+    const moves = game.getMoves(White);
+    
+    assert.ok(moves);
+    assert.equal(moves.length, 14);
+
+    const moves2 = game.getMoves(Black);
+    
+    assert.ok(moves2);
+    assert.equal(moves2.length, 0);
+}
+
 // New board
 {
     const board = simplechess.createBoard();

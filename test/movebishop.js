@@ -20,7 +20,21 @@ const Bishop = simplechess.Bishop;
     assert.equal(moves.length, 7);
 }
 
-// Blocking bishop
+// Bishop at center
+
+{
+    const board = simplechess.createBoard();
+
+    board.putContent(4, 4, { color: White, piece: Bishop });
+
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
+
+    assert.ok(moves);
+    assert.equal(moves.length, 13);
+}
+
+// Blocking bishops different color
 
 {
     const board = simplechess.createBoard();
@@ -38,6 +52,26 @@ const Bishop = simplechess.Bishop;
 
     assert.ok(moves2);
     assert.equal(moves2.length, 9);
+}
+
+// Blocking bishops same color
+
+{
+    const board = simplechess.createBoard();
+
+    board.putContent(0, 0, { color: White, piece: Bishop });
+    board.putContent(1, 1, { color: White, piece: Bishop });
+    
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
+
+    assert.ok(moves);
+    assert.equal(moves.length, 8);
+
+    const moves2 = game.getMoves(Black);
+
+    assert.ok(moves2);
+    assert.equal(moves2.length, 0);
 }
 
 // New board

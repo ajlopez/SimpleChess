@@ -20,6 +20,20 @@ const Knight = simplechess.Knight;
     assert.equal(moves.length, 2);
 }
 
+// In the center
+
+{
+    const board = simplechess.createBoard();
+
+    board.putContent(4, 4, { color: White, piece: Knight });
+
+    const game = simplechess.createGame(board);
+    const moves = game.getMoves(White);
+
+    assert.ok(moves);
+    assert.equal(moves.length, 8);
+}
+
 // New board
 
 {

@@ -41,6 +41,11 @@ TBD
 
 - 0.0.1 Under development in master
 
+## References
+
+- [Programming a Computer for Playing Chess](https://www.pi.infn.it/~carosi/chess/shannon.txt)
+- [amoeba: an UCI chess engine in D language](https://github.com/abulmo/amoeba)
+
 ## Contribution
 
 Feel free to [file issues](https://github.com/ajlopez/SimpleChess) and submit
